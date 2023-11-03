@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
 project(wx_cmake_template_core LANGUAGES CXX)
 
@@ -13,6 +13,8 @@ endif()
 set(wxWidgets_USE_STATIC 1)
 
 find_package(wxWidgets REQUIRED)
+find_package(matplot++ REQUIRED)
+message(STATUS "CMAKE_PREFIX_PATH is: ${CMAKE_PREFIX_PATH}")
 
 set(SRCS main.cpp)
 
@@ -31,4 +33,4 @@ else()
     add_executable(main WIN32 ${SRCS} main.exe.manifest)
 endif()
 
-target_link_libraries(main PRIVATE ${wxWidgets_LIBRARIES})
+target_link_libraries(main PRIVATE ${wxWidgets_LIBRARIES} Matplot++::matplot)

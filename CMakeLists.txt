@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
 project(wx_cmake_template LANGUAGES CXX)
 
@@ -10,19 +10,21 @@ set_property(DIRECTORY PROPERTY EP_BASE ${CMAKE_BINARY_DIR}/subprojects)
 
 set(STAGED_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/stage)
 
+include(FetchContent)
+include(ExternalProject)
 add_subdirectory(thirdparty)
 
-include(ExternalProject)
 ExternalProject_Add(${PROJECT_NAME}_core
   DEPENDS
   wxWidgets_external
+  matplotplusplus_external
   SOURCE_DIR
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   CMAKE_ARGS
   -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-
   -DwxWidgets_ROOT_DIR=${wxWidgets_ROOT_DIR}
   -DENV_WX_CONFIG=${ENV_WX_CONFIG}
+  -Dmatplotplusplus_ROOT_DIR=${matplotplusplus_ROOT_DIR}
   CMAKE_CACHE_ARGS
   -DCMAKE_PREFIX_PATH:PATH=${CMAKE_PREFIX_PATH}
   BUILD_ALWAYS

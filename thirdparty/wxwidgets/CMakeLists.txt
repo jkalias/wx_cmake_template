@@ -13,15 +13,13 @@ else()
         GIT_REPOSITORY
         https://github.com/wxWidgets/wxWidgets.git
         GIT_TAG
-        v3.1.4
+        v3.2.3
         UPDATE_COMMAND
         ""
         CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=${STAGED_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-
         -DwxBUILD_SHARED=OFF
-
         TEST_AFTER_INSTALL
         0
         DOWNLOAD_NO_PROGRESS
