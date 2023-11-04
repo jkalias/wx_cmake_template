@@ -9,8 +9,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set_property(DIRECTORY PROPERTY EP_BASE ${CMAKE_BINARY_DIR}/subprojects)
 
 set(STAGED_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/stage)
+list(APPEND CMAKE_PREFIX_PATH ${STAGED_INSTALL_PREFIX})
 
-include(FetchContent)
 include(ExternalProject)
 add_subdirectory(thirdparty)
 
@@ -24,7 +24,6 @@ ExternalProject_Add(${PROJECT_NAME}_core
   -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
   -DwxWidgets_ROOT_DIR=${wxWidgets_ROOT_DIR}
   -DENV_WX_CONFIG=${ENV_WX_CONFIG}
-  -Dmatplotplusplus_ROOT_DIR=${matplotplusplus_ROOT_DIR}
   CMAKE_CACHE_ARGS
   -DCMAKE_PREFIX_PATH:PATH=${CMAKE_PREFIX_PATH}
   BUILD_ALWAYS

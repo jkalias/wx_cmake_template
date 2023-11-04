@@ -13,8 +13,7 @@ endif()
 set(wxWidgets_USE_STATIC 1)
 
 find_package(wxWidgets REQUIRED)
-find_package(matplot++ REQUIRED)
-message(STATUS "CMAKE_PREFIX_PATH is: ${CMAKE_PREFIX_PATH}")
+find_package(Matplot++ REQUIRED)
 
 set(SRCS main.cpp)
 
